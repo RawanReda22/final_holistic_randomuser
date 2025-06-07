@@ -8,4 +8,8 @@ class UserProvider extends ChangeNotifier{
     randomUserModel = await UserService.getUsers();
     notifyListeners();
   }
+  Future<void> fetchGender({required String gender})async{
+    randomUserModel = await UserService.getGender(gender: gender);
+    notifyListeners();
+  }
 }

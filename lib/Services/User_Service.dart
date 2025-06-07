@@ -12,4 +12,15 @@ static Future<RandomUserModel>getUsers()async{
     throw Exception("Tray Again");
   }
 }
+
+static Future<RandomUserModel>getGender({required String gender})async{
+  String url = "https://randomuser.me/api/?results=100&gender=$gender";
+  var response = await dio.get(url);
+  if(response.statusCode == 200){
+    return RandomUserModel.fromjson(response.data);
+  }
+  else{
+    throw Exception("Tray Again");
+  }
+}
 }
