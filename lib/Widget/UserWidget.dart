@@ -1,3 +1,4 @@
+import 'package:final_holistic_randomuser/Screens/userDetails.dart';
 import 'package:flutter/material.dart';
 class UserWidget extends StatelessWidget {
    UserWidget({super.key , required this.email , required this.name , required this.img});
@@ -6,23 +7,35 @@ var name;
 var email;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 50,
-            child: Image.network(img),
+    return Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder:(context) =>
+                UserDetails(name: name, email: email, img: img),)
+            );
+          } ,
+          child: Row(
+
+            children: [
+              CircleAvatar( radius: 30,
+                backgroundImage: NetworkImage(img),
+              ),
+              const SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(email ,  style: const TextStyle(fontWeight: FontWeight.bold)),
+
+                ],
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(name , style: TextStyle(fontSize: 15 , fontWeight: FontWeight.bold),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(email , style: TextStyle(fontSize: 15 , fontWeight: FontWeight.bold)),
-          ),
-        ],
-      ),
+        )
     );
   }
 }
