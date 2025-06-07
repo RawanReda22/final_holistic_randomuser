@@ -3,8 +3,7 @@ import 'package:final_holistic_randomuser/Widget/UserWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 class UserScreen extends StatelessWidget {
-   UserScreen({super.key,  this.gender });
-final  gender;
+   UserScreen({super.key, });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
